@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OS Resource Allocation & Deadlock Visualizer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div>
+        <h1>OS Resource Allocation & Deadlock Visualizer</h1>
+        <p>Operating System Microproject</p>
+    </div>
+
+</header>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar">
+
+    <button onclick="showSection('home')">🏠 Home</button>
+
+    <button onclick="showSection('simulationSection')">
+        📊 Simulation
+    </button>
+
+    <button onclick="showSection('about')">
+        ℹ️ About
+    </button>
+
+    <button onclick="showSection('instructions')">
+        📖 Instructions
+    </button>
+
+</nav>
+
+
+<main>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="page-section">
+
+    <div class="hero">
+
+        <h2>OS Resource Allocation & Deadlock Visualizer</h2>
+
+        <p>
+            An interactive web application for understanding
+            resource allocation and deadlock detection in
+            Operating Systems.
+        </p>
+
+        <button class="start-btn"
+                onclick="showSection('simulationSection')">
+            ▶ Start Simulation
+        </button>
+
+    </div>
+
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>🔄 Resource Allocation</h3>
+            <p>
+                Simulate allocation of resources to different
+                processes.
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>🧮 Banker's Algorithm</h3>
+            <p>
+                Calculate the Need Matrix and find a safe sequence.
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>⚠️ Deadlock Detection</h3>
+            <p>
+                Identify unsafe states and processes that cannot
+                complete.
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📈 Visualization</h3>
+            <p>
+                Understand process-resource relationships visually.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SIMULATION ================= -->
+
+<section id="simulationSection"
+         class="page-section"
+         style="display:none;">
+
+    <section class="card">
+
+        <h2>1. Simulation Setup</h2>
+
+        <div class="input-group">
+
+            <label>Number of Processes</label>
+
+            <input type="number"
+                   id="processCount"
+                   min="1"
+                   max="10"
+                   value="4">
+
+
+            <label>Number of Resources</label>
+
+            <input type="number"
+                   id="resourceCount"
+                   min="1"
+                   max="10"
+                   value="3">
+
+
+            <button onclick="generateTables()">
+                Generate Tables
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>2. Available Resources</h2>
+
+        <div id="availableContainer">
+            Generate tables first.
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>3. Allocation Matrix</h2>
+
+        <div id="allocationContainer">
+            Generate tables first.
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>4. Maximum Matrix</h2>
+
+        <div id="maximumContainer">
+            Generate tables first.
+        </div>
+
+    </section>
+
+
+    <section class="card buttons">
+
+        <button onclick="calculateNeed()">
+            🧮 Calculate Need Matrix
+        </button>
+
+        <button onclick="runBankersAlgorithm()">
+            ▶ Check Safe State
+        </button>
+
+        <button onclick="resetProject()">
+            🔄 Reset
+        </button>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>5. Need Matrix</h2>
+
+        <div id="needContainer">
+            Need matrix will appear here.
+        </div>
+
+    </section>
+
+
+    <!-- RESOURCE GRAPH -->
+
+    <section class="card">
+
+        <h2>6. Resource Allocation Graph</h2>
+
+        <div id="resourceGraph">
+
+            <p>
+                Run the simulation to generate the
+                Resource Allocation Graph.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SIMULATION -->
+
+    <section class="card">
+
+        <h2>7. Simulation Steps</h2>
+
+        <div id="simulation">
+            Simulation steps will appear here.
+        </div>
+
+    </section>
+
+
+    <!-- RESULT -->
+
+    <section class="card result-card">
+
+        <h2>8. Final Result</h2>
+
+        <div id="result">
+            Result will appear here.
+        </div>
+
+    </section>
+
+</section>
+
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about"
+         class="page-section"
+         style="display:none;">
+
+    <div class="card about-card">
+
+        <h2>ℹ️ About Project</h2>
+
+        <h3>Project Title</h3>
+
+        <p>
+            OS Resource Allocation and Deadlock Visualizer
+        </p>
+
+
+        <h3>Project Description</h3>
+
+        <p>
+            This project is a web-based educational application
+            designed to demonstrate how an Operating System manages
+            resources among processes and detects unsafe or
+            deadlock conditions.
+        </p>
+
+
+        <h3>Objective</h3>
+
+        <ul>
+
+            <li>
+                Understand resource allocation in Operating Systems.
+            </li>
+
+            <li>
+                Implement Banker's Algorithm.
+            </li>
+
+            <li>
+                Calculate the Need Matrix.
+            </li>
+
+            <li>
+                Find a safe sequence.
+            </li>
+
+            <li>
+                Detect unsafe/deadlock conditions.
+            </li>
+
+            <li>
+                Visualize process-resource relationships.
+            </li>
+
+        </ul>
+
+
+        <h3>Technologies Used</h3>
+
+        <div class="technology-list">
+
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>Banker's Algorithm</span>
+            <span>Resource Allocation Graph</span>
+
+        </div>
+
+
+        <h3>Project Type</h3>
+
+        <p>
+            Diploma / Polytechnic Operating System Microproject
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= INSTRUCTIONS ================= -->
+
+<section id="instructions"
+         class="page-section"
+         style="display:none;">
+
+    <div class="card">
+
+        <h2>📖 How to Use the Application</h2>
+
+
+        <div class="instruction">
+
+            <h3>Step 1</h3>
+
+            <p>
+                Enter the number of processes and resource types.
+            </p>
+
+        </div>
+
+
+        <div class="instruction">
+
+            <h3>Step 2</h3>
+
+            <p>
+                Click <b>Generate Tables</b>.
+            </p>
+
+        </div>
+
+
+        <div class="instruction">
+
+            <h3>Step 3</h3>
+
+            <p>
+                Enter the currently available resources.
+            </p>
+
+        </div>
+
+
+        <div class="instruction">
+
+            <h3>Step 4</h3>
+
+            <p>
+                Enter the Allocation Matrix.
+            </p>
+
+        </div>
+
+
+        <div class="instruction">
+
+            <h3>Step 5</h3>
+
+            <p>
+                Enter the Maximum Resource Matrix.
+            </p>
+
+        </div>
+
+
+        <div class="instruction">
+
+            <h3>Step 6</h3>
+
+            <p>
+                Click <b>Calculate Need Matrix</b>.
+            </p>
+
+            <p>
+                Formula:
+            </p>
+
+            <strong>
+                Need = Maximum − Allocation
+            </strong>
+
+        </div>
+
+
+        <div class="instruction">
+
+            <h3>Step 7</h3>
+
+            <p>
+                Click <b>Check Safe State</b> to run
+                Banker's Algorithm.
+            </p>
+
+        </div>
+
+
+        <div class="instruction">
+
+            <h3>Step 8</h3>
+
+            <p>
+                The application displays the Safe Sequence
+                or Deadlock/Unsafe State.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>OS Resource Allocation & Deadlock Visualizer</h3>
+
+    <p>
+        Developed using HTML, CSS & JavaScript
+    </p>
+
+    <p>
+        Operating System Microproject
+    </p>
+
+</footer>
+
+
+<script>
+
+function showSection(sectionId) {
+
+    const sections =
+        document.querySelectorAll(".page-section");
+
+    sections.forEach(section => {
+
+        section.style.display = "none";
+
+    });
+
+    document.getElementById(sectionId).style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
